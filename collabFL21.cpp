@@ -20,6 +20,7 @@ string semester = "Fall 2021";
 // ***************************************************************
 
 void showMenu();
+void menu3Birge();
 void menu18Smiley(int);
 
 // ***************************************************************
@@ -58,6 +59,7 @@ int main()
             case 2:                 // Belakhoua - call to function goes here
                 break;
             case 3:                 // Birge - call to function goes here
+                menu3Birge();
                 break;
             case 4:                 // Carpenter - call to function goes here
                 break;
@@ -146,6 +148,70 @@ void showMenu()
 //                     where XX is your menu number and
 //                           YY is your last name with no spaces (camel case)           
 // *****************************************************************************************
+
+// *****************************************************************************************
+// MENU ID:          3
+// FUNCTION:         menu3Birge
+// DESCRIPTION:      the program is an interactive game where a user inputs a character,
+//                      and it tries to get home
+// OUTPUT:           User enters Y
+//                      Program then starts a race home with the character Y
+// *****************************************************************************************
+void menu3Birge()
+{
+    srand(time(0));
+
+    // Length the character runs
+    const int length = 60;
+
+    // Prompt User for Race
+    cout << endl << endl;
+    cout << "Choose a letter to begin the race home, dont fall in a bush!" << endl;
+
+    // User input
+    char k;
+    cin >> k;
+
+    // This will put the position of the character in the middle
+    int position = length / 2; 
+
+    // Bounderies and Spacing/Character outputs
+    while(true)
+    {
+        cout << "|BUSH|";
+
+        for (int i = 0; i < length; i++)
+        {
+        if (i == position) 
+            cout << k;
+        else
+            cout << " ";
+        }
+        
+        cout << "|HOME|" << endl;
+
+        // Randomizing character movement
+        int move = rand() % 3 - 1;
+        position = position + move; 
+
+        // Final output result
+        if (position < 1)
+        {
+            cout << endl << endl;
+            cout << "Oh no!!! You fell into a bush!" << endl << endl;
+            break;
+        }
+        if (position > length - 1)
+        {
+            cout << endl << endl;
+            cout << "Lucky! You made it home safe!" << endl << endl;
+            break;
+        }
+
+        // Looper
+        for(int sleep = 0; sleep < 1000000; ++sleep);
+    }
+}
 
 // *****************************************************************************************
 // MENU ID:          18
